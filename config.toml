@@ -1,4 +1,4 @@
-tbaseurl = "https://mortega.dev"
+baseurl = "https://mortega.dev"
 languageCode = "en-us"
 theme = "hello-friend"
 paginate = 5
