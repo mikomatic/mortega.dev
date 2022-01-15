@@ -1,4 +1,4 @@
-baseurl = "/"
+tbaseurl = "https://mortega.dev"
 languageCode = "en-us"
 theme = "hello-friend"
 paginate = 5
@@ -27,8 +27,8 @@ paginate = 5
 
   [languages]
   [languages.en]
-    title = "elmike.net"
-    subtitle = "A simple theme for Hugo"
+    title = "Miguel Ortega"
+    subtitle = "Posts on Software Development"
     keywords = ""
     copyright = ""
     weight = 1
@@ -42,8 +42,15 @@ paginate = 5
     dateFormatSingle = "2006-01-02"
     dateFormatList = "2006-01-02"
     # leave empty to disable, enter display text to enable
-    # lastModDisplay = ""
+    lastModDisplay = "Last Updated"
+
+    custom_css = ["css/molokai.css","css/custom.css"]
 
     [languages.en.params.logo]
-      logoText = "elmike"
+      logoText = "miguel codes"
       logoHomeLink = "/"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "archive"
+        name = "Archive"
+        url = "/archive"
