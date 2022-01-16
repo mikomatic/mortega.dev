@@ -109,7 +109,17 @@ Ouvrez un terminal et tapez :
 
 Si vous souhaitez installer une version pre-release (c'est-à-dire, une « release candidate »), utilisez :
 
- $ gem install asciidoctor --pre
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+
+
+NOTE: OK
 
 === (e) Bundler
 
