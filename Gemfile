@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-gem 'asciidoc'
+gem 'asciidoctor'
 gem 'rouge'
