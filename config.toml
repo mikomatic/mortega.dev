@@ -43,7 +43,7 @@ enableGitInfo = true
     dateFormatSingle = "2006-01-02"
     dateFormatList = "2006-01-02"
     # leave empty to disable, enter display text to enable
-    lastModDisplay = "Last Updated"
+    lastModDisplay = "last mod."
 
     custom_css = ["css/molokai.css","css/custom.css"]
 
