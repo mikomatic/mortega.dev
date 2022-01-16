@@ -1,10 +1,2 @@
 @import "css/molokai.css";
 @import "css/custom.css";
-
-p  a, li  a {
-    color: #fe5186;
-}
-
-pre {
-    background: none;
-}
