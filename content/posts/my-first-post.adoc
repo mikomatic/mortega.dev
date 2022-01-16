@@ -119,7 +119,53 @@ end
 ----
 
 
-NOTE: OK
+NOTE: lngdhzg uzgd zg  uzduzdg uzgd u uzg duzgdizd
+
+
+[source,yaml,indent=0,linenums=true]
+----
+name: GitHub Pages
+
+on:                                              # <1>
+  push:
+    branches:
+    - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v1                  # <2>
+      with:
+        submodules: true
+
+    - name: Install Ruby Dev                     # <3>
+      run: sudo apt-get install ruby-dev
+
+    - name: Install AsciiDoctor and Rouge
+      run: sudo gem install asciidoctor rouge
+
+    - name: Setup Hugo                           # <4>
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.62.0'
+
+    - name: Build                                # <5>
+      run: hugo
+
+    - name: Deploy                               # <6>
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
+----
+<1> Run this action whenever changes are pushed to the _master_ branch
+<2> The first step in the job: check out the source code
+<3> Install https://asciidoctor.org/[AsciiDoctor] (in case you use Hugo with AsciiDoc files, like I do) and https://github.com/rouge-ruby/rouge[Rouge], a Ruby gem for syntax highlighting; I'm installing the gems instead of Ubuntu packages in order to get current versions
+<4> Set up Hugo via the aforementioned GitHub Actions for Hugo
+<5> Run the `hugo` command; here you could add parameters such as `-F` for also building future posts
+<6> Deploy the website to GitHub pages; the contents of Hugo's build directory _public_ will be pushed to the _gh-pages_ branch of the upstream repository, using the deploy key configured before
 
 === (e) Bundler
 
