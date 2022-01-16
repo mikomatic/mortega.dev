@@ -1,236 +1,257 @@
 /* AsciiDoctor*/
 table {
-    border-collapse: collapse;
-    border-spacing: 0
+  border-collapse: collapse;
+  border-spacing: 0
 }
 
 .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
-    text-rendering: optimizeLegibility;
-    text-align: left;
-    font-family: "Noto Serif", "DejaVu Serif", serif;
-    font-size: 1rem;
-    font-style: italic
+  text-rendering: optimizeLegibility;
+  text-align: left;
+  font-family: "Noto Serif", "DejaVu Serif", serif;
+  font-size: 1rem;
+  font-style: italic
 }
 
 table.tableblock.fit-content > caption.title {
-    white-space: nowrap;
-    width: 0
+  white-space: nowrap;
+  width: 0
 }
 
 .paragraph.lead > p, #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
-    font-size: 1.21875em;
-    line-height: 1.6;
-    color: rgba(0, 0, 0, .85)
+  font-size: 1.21875em;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, .85)
 }
 
 table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
-    font-size: inherit
+  font-size: inherit
 }
 
 .admonitionblock > table {
-    border-collapse: separate;
-    border: 0;
-    background: none;
-    width: 100%;
-    table-layout: auto;
+  border-collapse: separate;
+  border: 0;
+  background: none;
+  width: 100%;
+  table-layout: auto;
 }
 
 .admonitionblock > table td.icon {
-    text-align: center;
-    width: 80px
+  text-align: center;
+  width: 80px
 }
 
 .admonitionblock > table td.icon img {
-    max-width: none
+  max-width: none
 }
 
 .admonitionblock > table td.icon .title {
-    font-weight: bold;
-    font-family: "Open Sans", "DejaVu Sans", sans-serif;
-    text-transform: uppercase;
-    font-size: 2.0em;
+  font-weight: bold;
+  font-family: "Open Sans", "DejaVu Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 2.0em;
 }
 
 .admonitionblock > table td.content {
-    padding-left: 1.125em;
-    padding-right: 1.25em;
-    border-left: 1px solid #dddddf;
-    color: unset;
-    margin: unset;
+  padding-left: 1.125em;
+  padding-right: 1.25em;
+  border-left: 1px solid #dddddf;
+  color: unset;
+  margin: unset;
 }
 
 .admonitionblock > table td.content > :last-child > :last-child {
-    margin-bottom: 0
+  margin-bottom: 0
 }
 
 .admonitionblock td.icon [class^="fa icon-"] {
-    font-size: 2.5em;
-    cursor: default
+  font-size: 2.5em;
+  cursor: default
 }
 
 .admonitionblock td.icon .icon-note::before {
-    content: "\f05a";
-    color: #317df1
+  content: "\f05a";
+  color: #317df1
 }
 
 .admonitionblock td.icon .icon-tip::before {
-    content: "\f0eb";
-    color: rgba(155, 155, 0)
+  content: "\f0eb";
+  color: rgba(155, 155, 0)
 }
 
 .admonitionblock td.icon .icon-warning::before {
-    content: "\f071";
-    color: #bf6900
+  content: "\f071";
+  color: #bf6900
 }
 
 .admonitionblock td.icon .icon-caution::before {
-    content: "\f06d";
-    color: #bf3400
+  content: "\f06d";
+  color: #bf3400
 }
 
 .admonitionblock td.icon .icon-important::before {
-    content: "\f06a";
-    color: #bf0000
+  content: "\f06a";
+  color: #bf0000
 }
 
 .conum[data-value] {
-    display: inline-block;
-    color: #fff !important;
-    background: #fe5186;;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
-    text-align: center;
-    font-size: .75em;
-    width: 1.67em;
-    height: 1.67em;
-    line-height: 1.67em;
-    font-family: "Open Sans", "DejaVu Sans", sans-serif;
-    font-style: normal;
-    font-weight: bold
+  display: inline-block;
+  color: #fff !important;
+  background: #fe5186;;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  text-align: center;
+  font-size: .75em;
+  width: 1.67em;
+  height: 1.67em;
+  line-height: 1.67em;
+  font-family: "Open Sans", "DejaVu Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold
 }
 
 .conum[data-value] * {
-    color: #fff !important
+  color: #fff !important
 }
 
 .conum[data-value] + b {
-    display: none
+  display: none
 }
 
 .conum[data-value]::after {
-    content: attr(data-value)
+  content: attr(data-value)
 }
 
 pre .conum[data-value] {
-    position: relative;
-    top: -.125em
+  position: relative;
+  top: -.125em
 }
 
 b.conum * {
-    color: inherit !important
+  color: inherit !important
 }
 
 .conum:not([data-value]):empty {
-    display: none
+  display: none
 }
 
 .colist td:not([class]):first-child {
-    padding: .4em .75em 0;
-    line-height: 1;
-    vertical-align: top;
+  padding: .4em .75em 0;
+  line-height: 1;
+  vertical-align: top;
 }
 
 .colist td:not([class]):first-child img {
-    max-width: none
+  max-width: none
 }
 
 .colist td:not([class]):last-child {
-    padding: .25em 0
+  padding: .25em 0
 }
 
 .colist > table {
-    table-layout: auto;
-    border: unset;
+  table-layout: auto;
+  border: unset;
 }
 
 .colist > table, td, th {
-    border: unset;
+  border: unset;
 }
 
 
 table.linenotable {
-    table-layout: auto;
-    border: unset;
-    margin: unset;
+  table-layout: auto;
+  border: unset;
+  margin: unset;
 }
 
 table.linenotable td.code {
-    padding-left: .75em;
+  padding-left: .75em;
 }
 
 table.linenotable td.linenos {
-    border-right: 1px solid rgba(255, 255, 255, .35);
-    opacity: .35;
-    padding-right: .5em;
+  border-right: 1px solid rgba(255, 255, 255, .35);
+  opacity: .35;
+  padding-right: .5em;
 }
 
 .literalblock pre, .listingblock > .content > pre {
-    padding: 0.75em;
+  padding: 0.75em;
 }
 
 .listingblock > .content {
-    align-items: unset;
-    margin: unset;
+  align-items: unset;
+  margin: unset;
 }
 
 .highlight pre {
-    padding: 0px;
+  padding: 0;
 }
 
 blockquote {
-    font-size: 1.05rem;
+  font-size: 1.05rem;
 }
 
 .admonitionblock table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 40px 0;
-    border-radius: 5px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 40px 0;
+  border-radius: 5px;
 }
 
 .hdlist1 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 p a, li a, td a {
-    color: #fe5186;
-    text-decoration: none;
+  color: #fe5186;
+  text-decoration: none;
 }
 
 p a:hover, li a:hover, td a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 table, td:not(.js-line-number), th {
-    border: none;
+  border: none;
 }
 
 h1 .anchor::before, h2 .anchor::before, h3 .anchor::before, h4 .anchor::before, h5 .anchor::before, h6 .anchor::before {
-    content: "\00a7";
-    color: #fe5186;
+  content: "\00a7";
+  color: #fe5186;
 }
 
 h1 .anchor, h2 .anchor, h3 .anchor, h4 .anchor, h5 .anchor, h6 .anchor {
-    position: absolute;
-    text-decoration: none;
-    width: 2.25ex;
-    margin-left: -2ex;
-    padding-left: .5ex;
-    visibility: hidden;
-    font-weight: 400;
+  position: absolute;
+  text-decoration: none;
+  width: 2.25ex;
+  margin-left: -2ex;
+  padding-left: .5ex;
+  visibility: hidden;
+  font-weight: 400;
 }
 
 h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
-    visibility: visible;
+  visibility: visible;
+}
+
+.sidebarblock {
+  background: #efeded;
+  border-radius: .3rem;
+}
+
+p a, li a {
+  color: #fe5186;
+}
+
+pre {
+  background: none;
+}
+
+.content {
+  margin: 25px 0;
+}
+
+li p {
+  margin: 5px 0;
 }
