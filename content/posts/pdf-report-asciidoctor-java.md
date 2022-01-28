@@ -2,11 +2,8 @@
 title: "Generate PDF Documents in your Spring Boot App with AsciidoctorJ"
 date: 2022-01-16T10:26:10+01:00
 tags: ["asciidoc", "pdf", "java"]
+toc: true
 ---
-:source-highlighter: rouge
-:rouge-style: molokai
-:icons: font
-:sectanchors:
 
 In a recent project I worked there was a need to generate PDF documents.
 <!--more-->
@@ -17,10 +14,10 @@ Before the existing application came to place, most users were manually creating
 
 The JVM ecosystem offers many possibilities to generate printable documents, to name a few:
 
-- https://eclipse.github.io/birt-website/[Birt]
-- https://www.jaspersoft.com/products/jasperreports-library[JasperReports]
-- https://itextpdf.com/en/products/itext-7[iText]
-- https://pdfbox.apache.org/[PDFBox]
+- [Birt](https://eclipse.github.io/birt-website/)
+- [JasperReports](https://www.jaspersoft.com/products/jasperreports-library)
+- [iText](https://itextpdf.com/en/products/itext-7)
+- [PDFBox](https://pdfbox.apache.org/)
 
 While these libraries certainly offer battle-tested solutions and many features (some have been around for ~20 years !) for small or even medium project I find them a bit excessive.
 (_Disclaimer: I only have experience with the first two, that you won't find in my CV_ 😀)
@@ -37,9 +34,7 @@ I have been using it for years for the technical documentation of personal and n
 
 ## Show me the code
 
-****
-If you are in a hurry you can check the code directly on https://github.com/mikomatic/asciidoctorj-pdf-demo[Github]
-****
+> If you are in a hurry you can check the code directly on [Github](https://github.com/mikomatic/asciidoctorj-pdf-demo)
 
 Integrating `Asciidoctor` into your app is as simple as adding a maven (or gradle) dependency
 
@@ -59,40 +54,38 @@ Integrating `Asciidoctor` into your app is as simple as adding a maven (or gradl
 
 Now let's see how you can generate a document :
 
-[source,java,indent=0,linenums=true]
-----
-try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) { <1>
+```java
+// 1. Create Asciidoctor factory
+try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) { 
 
-    Attributes attributes = Attributes.builder()<2>
-          .attribute("pdf-theme", theme) // optional theme
-          .attribute("doctype", "book")
-          .attribute("icons", "font")
-          .build();
+  // 2. Define common attributes (you can even define a theme, more on that later)
+  Attributes attributes = Attributes.builder()<2>
+      .attribute("pdf-theme", theme) // optional theme
+      .attribute("doctype", "book")
+      .attribute("icons", "font")
+      .build();
 
-    Options options = Options.builder()
-          .backend("pdf")<3>
-          .attributes(attributes)
-          .toFile(outputLocation.toFile()).build();
+  //Set PDF backend
+  Options options = Options.builder()
+      .backend("pdf")<3>
+      .attributes(attributes)
+      .toFile(outputLocation.toFile()).build();
 
-    asciidoctor.convert(asciidocContent, options);<4>
+  // Do the actual conversion, where `asciidocContent` is a string containing a ASCIIDOC template
+  asciidoctor.convert(asciidocContent, options);<4>
 }
-----
-
-<1> Create Asciidoctor factory
-<2> Define common attributes (you can even define a theme, more on that later)
-<3> Set PDF backend
-<4> Do the actual conversion, where `asciidocContent` is a string containing a ASCIIDOC template
+```
 
 That's pretty much it !
 
 The `asciidocContent` can come from a "static" file on your classpath (or anywhere really).
-For more dynamic document, it is possible to use any templating engine (in our project we used https://github.com/spullara/mustache.java[mustache]).
+For more dynamic document, it is possible to use any templating engine (in our project we used [mustache](https://github.com/spullara/mustache.java)).
 
 It is possible to provide customization to the default theme, while it is not as powerful as other solutions, it can be good enough for most needs.
-Several examples can be found https://github.com/asciidoctor/asciidoctor-pdf/tree/main/examples[on github].
+Several examples can be found [on github](https://github.com/asciidoctor/asciidoctor-pdf/tree/main/examples).
 
 Themes can also be packaged as `jar` for easier distribution.
-The https://github.com/asciidoctor/asciidoctor-pdf/blob/main/docs/theming-guide.adoc[documentation] is quite detailed.
+The [documentation](https://github.com/asciidoctor/asciidoctor-pdf/blob/main/docs/theming-guide.adoc) is quite detailed.
 
 ## Caveats
 
@@ -101,13 +94,13 @@ While this solution has served me well, it does come with some limitations:
 * Customization can be quite limited depending on your needs.
 * While diagrams as text is very practical, it does currently need an external dependency (graphviz, mermaid) present on your `PATH`.
 * Last but not least, the dependency that wraps a JRuby runtime does not work well in UBER jars (nested jars)
-** For Spring Boot apps, this can be solved via `requiresUnpack` option of `spring-boot-maven-plugin`. https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.build.extract-specific-libraries-when-an-executable-jar-runs[➡️Documentation]
-** For Quarkus, this is not possible yet https://github.com/asciidoctor/asciidoctorj/issues/1047[#issue]
+  * For Spring Boot apps, this can be solved via `requiresUnpack` option of `spring-boot-maven-plugin`. [➡️Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.build.extract-specific-libraries-when-an-executable-jar-runs)
+  * For Quarkus, this is not possible yet [#issue](https://github.com/asciidoctor/asciidoctorj/issues/1047)
 
-a quick demo project demonstrating the possibilities of this solution, with a custom theme,
-is available https://github.com/mikomatic/asciidoctorj-pdf-demo[on github].
+A quick demo project demonstrating the possibilities of this solution, with a custom theme,
+is available [on github](https://github.com/mikomatic/asciidoctorj-pdf-demo).
 
 ### Further reading
 
-- A good "Getting started" guide on https://www.baeldung.com/asciidoctor[baeldung]
-- https://blog.ninja-squad.com/2022/01/06/generate-pdf-documents-in-java/[Another post] I found using `iText` for _very_ simple documents.
+- A good "Getting started" guide on [baeldung](https://www.baeldung.com/asciidoctor)
+- [Another post](https://blog.ninja-squad.com/2022/01/06/generate-pdf-documents-in-java/) I found using `iText` for _very_ simple documents.
