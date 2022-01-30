@@ -48,6 +48,10 @@ header {
   margin-top: .2rem;
 }
 
+blockquote p {
+  margin: 0 0 1rem;
+}
+
 .tags > a {
   background: none;
   padding: .2rem .4rem;
