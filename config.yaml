@@ -13,7 +13,7 @@ params:
 
   # Enable float footnotes.
   # Default to true
-  enableFootnotes: true
+  enableFootnotes: false
 
   siteName: "Miguel's devblog"
   siteDesc: "Posts on Software Development"
