@@ -2,11 +2,10 @@
 title: "Generate PDF Documents in your Spring Boot App with AsciidoctorJ"
 date: 2022-01-16T10:26:10+01:00
 tags: ["asciidoc", "pdf", "java"]
-toc: true
 ---
 
 In a recent project I worked there was a need to generate PDF documents.
-<!--more-->
+
 The document itself required to display information about a complex domain hierarchical object, containing ~100+ attributes and other child objects.
 Before the existing application came to place, most users were manually creating Word documents to handle this requirement (with all the copy-pasting and human errors that one can imagine).
 
