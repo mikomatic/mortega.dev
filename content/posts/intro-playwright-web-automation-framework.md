@@ -2,7 +2,6 @@
 title: "Intro to Playwright Web Automation Framework in Java"
 date: 2022-01-30T18:04:33+01:00
 tags: ["java", "playwright"]
-draft: true
 ---
 
 In a recent project I found myself looking for a web automation framework.
@@ -98,7 +97,7 @@ a [Page Object Model][page_object_model].
 You can mock API endpoints, by handling requests in your test.
 
 ```java
-# Using custom testData to as a response to this API call
+// Using custom testData to as a response to this API call
 page.route("**/api/fetch_data", route -> route.fulfill(new Route.FulfillOptions()
   .setStatus(200)
   .setBody(testData)));
@@ -118,6 +117,8 @@ Finally, I really loved the possibility to generate a trace of your testing scri
 ```java
 Browser browser = chromium.launch();
 BrowserContext context = browser.newContext();
+
+// Setup tracing options
 context.tracing().start(new Tracing.StartOptions()
         .setScreenshots(true)
         .setSnapshots(true));
@@ -127,7 +128,13 @@ page.navigate("https://playwright.dev");
 context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));
 ```
 
-The generated zip can be viewed in command line or just by uploading it to https://trace.playwright.dev/.
+The generated zip can be viewed via a command line
+
+```powershell
+mvn exec:java -e "-Dexec.mainClass=com.microsoft.playwright.CLI" "-Dexec.args=show-trace target/trace.zip"
+```
+
+or just by uploading it to https://trace.playwright.dev/.
 
 <p>
 <img loading="lazy" src="/images/playwright/playwright_trace.JPG" alt="playwright inspector">
@@ -152,9 +159,13 @@ We only scratched the surface but here are some take aways
 
 It may reconcile me with web automation frameworks, who would have thought !
 
-One of the missing things I found is a nice reporting output, existing only in the `node` implementation.
+You don't event have to use it for your UI tests, via the Request API you can just automate your 
+REST calls to prepare your system for a manual test (_e.g. if you have a staging environment that you reset regularly_) and 
+iterate from there. Or just test your API, if that fits your needs.
 
-I hacked some integration with Junit5 and Allure Reporting framework - code is available [on Github](https://github.com/mikomatic/playwright-demo) - 
+The only one missing key I found is a nice reporting output, existing only in the `node` implementation.
+
+I hacked a project integrating Playwright with   Junit5 and Allure Reporting framework - code is available [on Github](https://github.com/mikomatic/playwright-demo) - 
 but an out-of-box reporting tool would make this incredible tool even greater.
 
 ### Further reading
