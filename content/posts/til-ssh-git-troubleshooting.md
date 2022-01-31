@@ -1,6 +1,8 @@
 ---
 title: "til: SSH Connexion troubleshooting"
 date: 2022-01-30T01:13:53+01:00
+categories: ["til"]
+tags: ["git", "ssh"]
 ---
 
 A few weeks ago several developers on our team were unable to connect to our Gitlab instance using the SSH protocol.
@@ -58,7 +60,7 @@ PubkeyAcceptedAlgorithms +ssh-rsa
 
 So while, the solution was actually the same as other teams members, i'm glad i actually understood the _why_.
 
-#### Some References:
+### Further reading
 
 - Troubleshooting
   Git [on BitBucket support page](https://confluence.atlassian.com/bitbucketserverkb/ssh-rsa-key-rejected-with-message-no-mutual-signature-algorithm-1026057701.html)
@@ -69,7 +71,5 @@ So while, the solution was actually the same as other teams members, i'm glad i 
 [^2]: Gitlab/Github recommend [ED25519 keys](https://docs.gitlab.com/ee/ssh/#ed25519-ssh-keys)
 
 [1]: https://docs.gitlab.com/ee/ssh/#password-prompt-with-git-clone
-
 [git]: https://github.com/git-for-windows/git/releases/tag/v2.33.1.windows.1
-
 [openssh]: https://www.openssh.com/txt/release-8.8
