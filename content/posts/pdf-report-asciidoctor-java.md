@@ -2,6 +2,8 @@
 title: "Generate PDF Documents in your Spring Boot App with AsciidoctorJ"
 date: 2022-01-16T10:26:10+01:00
 tags: ["asciidoc", "pdf", "java"]
+categories: ["java"]
+author: "@mikomatic"
 ---
 
 In a recent project I worked there was a need to generate PDF documents.

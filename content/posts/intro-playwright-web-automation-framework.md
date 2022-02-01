@@ -2,6 +2,8 @@
 title: "Intro to Playwright Web Automation Framework in Java"
 date: 2022-01-30T18:04:33+01:00
 tags: ["java", "playwright"]
+categories: ["java"]
+author: "@mikomatic"
 ---
 
 In a recent project I found myself looking for a web automation framework.

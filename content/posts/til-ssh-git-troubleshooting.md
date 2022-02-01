@@ -3,6 +3,7 @@ title: "til: SSH Connexion troubleshooting"
 date: 2022-01-30T01:13:53+01:00
 categories: ["til"]
 tags: ["git", "ssh"]
+author: "@mikomatic"
 ---
 
 A few weeks ago several developers on our team were unable to connect to our Gitlab instance using the SSH protocol.
