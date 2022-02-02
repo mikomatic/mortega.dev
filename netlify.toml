@@ -1,0 +1,6 @@
+[build]
+publish = "public"
+command = "hugo --minify -b https://www.mortega.dev"
+
+[context.deploy-preview]
+command = "hugo --minify -b $DEPLOY_PRIME_URL"
