@@ -1,0 +1,24 @@
+template: static/images/ogimage.png
+info:
+  start:
+    px: 300
+    py: 520
+  fgHexColor: "#A0A0A0"
+  fontSize: 38
+  fontStyle: Regular
+  separator: " - "
+tags:
+  start:
+    px: 850
+    py: 530
+  fgHexColor: "#FFFFFF"
+  bgHexColor: "#254357"
+  fontSize: 22
+  fontStyle: Medium
+  boxAlign: Left
+  boxSpacing: 6
+  boxPadding:
+    top: 6
+    right: 10
+    bottom: 6
+    left: 8
