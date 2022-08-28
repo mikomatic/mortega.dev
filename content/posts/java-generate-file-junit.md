@@ -6,11 +6,8 @@ categories: ["til"]
 author: "@mikomatic"
 ---
 
-Recently I wanted to implement a new feature in our codebase, that dealt with uploading
-a file via a simple upload or a multi-part upload to an AWS S3 storage. It was actually a fun
-feature to develop, I learned a lot about AWS SDK on [uploading an object using multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-upload-object.html)
-and using [presign urls](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) which
-can be extremely useful to delegate the upload responsibility (and the dedicated resources) to the client apps.
+Recently I put in place a new feature in our app that dealt with uploading file(s). It could we use a simple upload or a
+multi-part upload to cloud storage.
 
 Testing this feature required the creation of dummy tests files with specific size in order to trigger
 (or not) the multi-part upload:
@@ -20,46 +17,51 @@ Testing this feature required the creation of dummy tests files with specific si
 - Files creation should as fast as possible.
 - The actual content of the file is not important.
 
-First two requirements can be answered using Junit 5's [TempDirectory extension](https://junit.org/junit5/docs/current/user-guide/#writing-tests-built-in-extensions-TempDirectory)[^1]
+Junit
+5's [TempDirectory extension](https://junit.org/junit5/docs/current/user-guide/#writing-tests-built-in-extensions-TempDirectory)[^1]
+resolved to first 2 bullet points:
 
 The other requirements could be met with sparse files:
 
-> Sparse files are files stored in a file system where consecutive data blocks consisting of all zero-bytes (null-bytes) are compressed to nothing. There is often no reason to store lots of empty data, so the file system just records how long the sequence of empty data is instead of writing it out on the storage media. This optimization can save significant amounts of storage space for other purposes.
-> 
+> Sparse files are files stored in a file system where consecutive data blocks consisting of all zero-bytes (null-bytes)
+> are compressed to nothing. There is often no reason to store lots of empty data, so the file system just records how
+> long the sequence of empty data is instead of writing it out on the storage media. This optimization can save
+> significant amounts of storage space for other purposes.
+>
 > [source](https://www.ctrl.blog/entry/sparse-files.html)
 
 The following code generate a sparse file, open the file for writing, seeks a given position and adds
-somes bytes at the end. It leverages the `FileChannel` class.
+some bytes at the end. It leverages the `FileChannel` class.
 
 ```java
 @Test
-void example(@TempDir Path tempFolder) throws IOException {
-    // The sparse option is only taken into account if the underlying filesystem
-    // supports it
-    final OpenOption[] options = {
-            StandardOpenOption.WRITE, 
-            StandardOpenOption.CREATE_NEW , 
-            StandardOpenOption.SPARSE };
-    
-    final Path hugeFile = tempFolder.resolve("hugefile.txt");
+void example(@TempDir Path tempFolder)throws IOException{
+// The sparse option is only taken into account if the underlying filesystem
+// supports it
+final OpenOption[]options={
+        StandardOpenOption.WRITE,
+        StandardOpenOption.CREATE_NEW,
+        StandardOpenOption.SPARSE};
 
-    try (final SeekableByteChannel channel = Files.newByteChannel(hugeFile, options)) {
+final Path hugeFile=tempFolder.resolve("hugefile.txt");
+
+        try(final SeekableByteChannel channel=Files.newByteChannel(hugeFile,options)){
         // or any other size
-        long giB = 1024L * 1014L * 1024L;
+        long giB=1024L*1014L*1024L;
         channel.position(giB);
 
-        // Write some random bytes
-        final ByteBuffer buf = ByteBuffer.allocate(4).putInt(2);
+// Write some random bytes
+final ByteBuffer buf=ByteBuffer.allocate(4).putInt(2);
         buf.rewind();
         channel.write(buf);
-    }
+        }
 
-    //Do something with my dummy file
-}
+        //Do something with my dummy file
+        }
 ```
 
-Since we don't need to actually allocate disk space, large sparse files can be created in a relative short time, making a good fit
-for quick "unit" testing.
+Since we don't need to actually allocate disk space, large sparse files can be created in a relative short time, making
+a good fit for quick "unit" testing.
 
 ### Additional Resources:
 
