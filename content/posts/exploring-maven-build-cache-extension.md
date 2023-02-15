@@ -100,8 +100,8 @@ We can see that there is a lot going on here. The extension:
 - searches a corresponding build cache
 - If no cache is found, build continues (_cache miss_)
 
-Build cache information is stored in your `~/.m2` repository, under a `build-cache` folder. This can be useful to know
-order to debug any cache errors.
+Build cache information is stored in your `~/.m2` repository, under a `build-cache` folder. This can be useful to debug
+any cache errors.
 
 For every module a
 file `buildinfo.xml` ([ref](https://maven.apache.org/extensions/maven-build-cache-extension/build-cache-build.html)) is
