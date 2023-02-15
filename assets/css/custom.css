@@ -1,10 +1,12 @@
 :root {
   --font-color: #2d2f30;
   --link-botton-color: #303d5b;
+  --toc-background-color: aliceblue;
 }
 
 [data-user-color-scheme="dark"] {
   --font-color: #b3b9c5;
+  --toc-background-color: #50585fd1;
 }
 
 html {
@@ -13,6 +15,20 @@ html {
 
 body {
   font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+}
+
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
 }
 
 .navbar a.brand:hover {
@@ -50,10 +66,10 @@ header {
 
 blockquote {
   padding: 1rem 0 1rem 1rem;
-}
 
-blockquote p {
-  margin: 0 0 1rem;
+  p {
+    margin: 0 0 1rem;
+  }
 }
 
 .tags > a {
