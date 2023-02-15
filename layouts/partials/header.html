@@ -9,7 +9,7 @@
                     </span>
                     {{ end }}
                     {{ with .Site.Params.titleLogo }}
-                        <img src="{{ . | relURL }}" />
+                        <img loading="lazy" role="presentation" src="{{ . | relURL }}" />
                     {{ end }}
                     {{ .Site.Title }}
                     </a>
