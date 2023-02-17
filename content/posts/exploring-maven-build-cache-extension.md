@@ -137,7 +137,8 @@ mvn clean test
 
 We can see that maven totally skips `compile` and `test` execution, re-using cached data.
 
-This also work by a per-module cache, meaning that in a multi-module maven project, only affected modules will be built.
+This also works by a per-module cache, meaning that in a multi-module maven project, only affected modules will be
+built.
 
 ## Performance improvements
 
@@ -149,7 +150,7 @@ I did some minor testing, by running `mvn clean verify -DskipTests` on two proje
 
 {{< alert info>}}
 💬 **Note**: this is not a serious benchmark, and is provided just to give an example and
-showcase usage. _I'm purposely ignoring tests since i don't have the patience to run them on my current "low resource"
+showcase usage. _I'm purposely ignoring tests since I don't have the patience to run them on my current "low resource"
 laptop_ 😅
 {{< /alert >}}
 
@@ -158,8 +159,8 @@ laptop_ 😅
 | minimal mono-module    | ~7.4 s   | ~0.9 s                | `n/a`                      |
 | real life multi-module | ~120.2 s | ~16 s                 | ~25s                       |
 
-I saw x4-10 performance improvements on my build, that will be more significant if we take tests into
-consideration _which we should **always** be doing anyway_. I'm instantly sold 🚀.
+I saw x4-10 performance improvements on my build, even more pronounced when taking tests into
+consideration _which we should **always** be doing anyway_. I was instantly sold 🚀.
 
 ## Alternatives
 
@@ -183,6 +184,8 @@ I love that with this extension I can still benefit from these tools, and still 
 
 ## Troubleshooting
 
+If you stumble upon a weird behaviour ([_check open
+issues_ 🔗](https://issues.apache.org/jira/projects/MBUILDCACHE/issues/MBUILDCACHE-38?filter=allopenissues)),
 I found the two best ways to handle errors for now are:
 
 - Manually deleting cache folder, located at `~/.m2/build-cache`
@@ -197,7 +200,7 @@ started and benefit from faster build times in your local workflow and CI.
 The extension is fairly new, there might be some edge cases to resolve, but it's a bright step in the right direction,
 while we wait for maven 4.
 
-If you find any issues on the plugin, don't hesitate get involved, raise on issue on
+If you find any issues on the plugin, don't hesitate to get involved, raise an issue on
 the [dedicated Apache JIRA](https://issues.apache.org/jira/projects/MBUILDCACHE/). This really feels like the future of
 maven ❤️.
 
